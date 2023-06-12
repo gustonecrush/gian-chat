@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9"
+    tools:context=".ui.applicantpage.AboutMeChangeActivity">
+
+    <TextView
+        android:id="@+id/tvChangeabout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="left"
+        android:layout_marginVertical="50dp"
+        android:text="Change About me"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeabout" />
+
+    <EditText
+        android:id="@+id/add_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Andelle Gianzra Basae"
+        android:drawablePadding="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:paddingLeft="20dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvemail"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_name"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingLeft="20dp"
+        android:hint="andelle@gmail.com"
+        android:drawablePadding="10dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvemail"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Date of Birth"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEmail"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addDate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="19-03-2002"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Location"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDate"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addLocation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="Palembang"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvSalaryMinimum"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Minimum Salary"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addLocation"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addSalaryMinimum"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="13000000"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSalaryMinimum"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvEducationInstitution"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Education Institution"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addSalaryMinimum"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addEducationInstitution"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="Sriwijaya University"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEducationInstitution"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvDegree"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Degree"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEducationInstitution"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addDegree"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="Bachelor Degree"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDegree"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Mobile Phone"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDegree"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addPhone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="0812977297397"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvSkills"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Skills"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPhone"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addSkills"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="PostgreSQL"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:background="@drawable/edit_text_background"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSkills"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Language"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addSkills"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:hint="Indonesia"
+        android:textSize="15sp"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLanguage"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addLanguage"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addDesc"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingLeft="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="As a Mobile Development Expert, I specialize in
+designing, building...."
+        android:drawablePadding="10dp"
+        android:textSize="15sp"
+        android:background="@drawable/edit_text_background"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDesc"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="30dp"
+        android:backgroundTint="#F2F2F3"
+        android:textColor="@color/black"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDesc"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#5669FF"
+        android:layout_marginRight="30dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDesc"
+        app:layout_constraintVertical_bias="0.166" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
