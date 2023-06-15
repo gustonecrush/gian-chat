@@ -11,9 +11,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import umn.ac.id.myapplication.ui.api.ApiClient
-import umn.ac.id.myapplication.ui.chat.model.User
-import umn.ac.id.myapplication.ui.chat.other.*
 import umn.ac.id.myapplication.ui.data.SignUpResponse
+import umn.ac.id.myapplication.ui.model.User
 import umn.ac.id.myapplication.ui.utils.Resource
 
 class SignUpViewModel: ViewModel(){
@@ -35,9 +34,9 @@ class SignUpViewModel: ViewModel(){
 
                     var userID = JSONObject()
                     userID.put(User.USERNAME, username)
-                    userID.put(User.PASSWORD, password)
+                    userID.put(User.TOKEN, password)
 
-                    socket!!.emit(SING_UP, username, userID)
+                    socket!!.emit("SingUp", username, userID)
 
                     Log.d(TAG, "onResponse: ${_signup.value}")
                 } else {

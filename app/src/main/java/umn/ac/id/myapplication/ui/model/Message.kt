@@ -1,29 +1,19 @@
 package umn.ac.id.myapplication.ui.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import java.util.*
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Message(
-    var username: String = "",
+    var user: String = "",
     var message: String = "",
-    var imageUser: String = "",
-    var idS: String = "",
-    var isTyping: Boolean = false,
-    var idUser: String = "",
+    var token: String = "",
     var time: String = "",
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    val id: Int = 0,
-) {
-
-
+) : Parcelable {
     companion object {
         const val USERNAME = "username"
         const val MESSAGE = "message"
-        const val ID = "idS"
-        const val IMAGE_USER = "imageUser"
-        const val TYPING = "isTyping"
+        const val TOKEN = "token"
+        const val TIME = "time"
     }
 }

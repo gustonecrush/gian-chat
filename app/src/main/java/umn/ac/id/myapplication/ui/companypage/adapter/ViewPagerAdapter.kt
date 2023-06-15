@@ -1,4 +1,4 @@
-package umn.ac.id.myapplication.ui.chat.adapter
+package umn.ac.id.myapplication.ui.companypage
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

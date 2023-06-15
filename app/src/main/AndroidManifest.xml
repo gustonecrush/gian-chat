@@ -34,14 +34,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.chat.demo.ui.UserListActivity"
+            android:name=".ui.applicantpage.MessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.chat.demo.ui.MessageActivity"
+            android:name=".ui.companypage.MessageCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -1,11 +1,11 @@
 package umn.ac.id.myapplication.ui.api
 
 import okhttp3.MultipartBody
-import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 import umn.ac.id.myapplication.ui.data.*
+import umn.ac.id.myapplication.ui.model.ChatData
+import umn.ac.id.myapplication.ui.model.MessageData
 
 interface ApiInterface {
     @Multipart
@@ -67,5 +67,23 @@ interface ApiInterface {
     fun getProfileCompany(
         @Header("Authorization") token: String
     ): Call<GetCompanyProfileResponse>
+
+    @POST("api/chat/newchat")
+    fun createNewChat(
+        @Header("Authorization") token: String,
+        @Body chatData: ChatData
+    ): Call<GetChatResponse>
+
+    @POST("api/messages/sendfromapplicant")
+    fun sendMessageFromApplicant(
+        @Header("Authorization") token: String,
+        @Body messageData: MessageData
+    ): Call<GetChatResponse>
+
+    @POST("api/messages/sendfromcompany")
+    fun sendMessageFromCompany(
+        @Header("Authorization") token: String,
+        @Body messageData: MessageData
+    ): Call<GetChatResponse>
 
 }

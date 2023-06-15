@@ -5,20 +5,16 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class User(
-    var id: String = "",
-    var name: String = "",
-    var email: String = "",
+    var user: String = "",
     var image: String = "",
-    var password: String = "",
+    var token: String = "",
     var isOnline: Boolean = false
 ) : Parcelable {
 
     companion object {
-        const val NAME = "name"
-        const val EMAIL = "email"
-        const val PASSWORD = "password"
-        const val ID = "id"
+        const val USERNAME = "username"
         const val IMAGE = "image"
+        const val TOKEN = "token"
         const val IS_ONLINE = "isOnline"
     }
 

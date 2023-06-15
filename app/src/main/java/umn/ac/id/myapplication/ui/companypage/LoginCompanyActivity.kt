@@ -9,16 +9,16 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.Gson
 import io.socket.client.Socket
-import umn.ac.id.myapplication.R
-import umn.ac.id.myapplication.databinding.ActivityLoginBinding
+import org.json.JSONObject
 import umn.ac.id.myapplication.databinding.ActivityLoginCompanyBinding
 import umn.ac.id.myapplication.ui.api.SocketManager
 import umn.ac.id.myapplication.ui.applicantpage.MainActivity
 import umn.ac.id.myapplication.ui.applicantpage.SignUpActivity
-import umn.ac.id.myapplication.ui.chat.other.ConfigUser
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.data.UserSession
+import umn.ac.id.myapplication.ui.model.User
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodel.LoginViewModel
 import umn.ac.id.myapplication.ui.viewmodelfactory.LoginViewModelFactory
@@ -28,9 +28,6 @@ class LoginCompanyActivity : AppCompatActivity() {
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name="user")
     private lateinit var binding: ActivityLoginCompanyBinding
     private var socket: Socket? = null
-    private val configUser by lazy {
-        ConfigUser.getInstance(applicationContext)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +39,15 @@ class LoginCompanyActivity : AppCompatActivity() {
         val loginViewModel = ViewModelProvider(this, LoginViewModelFactory(pref))[LoginViewModel::class.java]
 
         socket = SocketManager.getInstance(this)!!.getSocket()
+        socket!!.on("SingIn") { ars ->
+            runOnUiThread {
+                users = Gson().fromJson(ars[1].toString(), User::class.java)
+                Intent(this@LoginCompanyActivity, MainCompanyActivity::class.java).also {
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(it)
+                }
+            }
+        }
 
         binding.buttonLogin.setOnClickListener {
             val username = binding.adEmailLogin.text.toString().trim()
@@ -52,7 +58,7 @@ class LoginCompanyActivity : AppCompatActivity() {
                 binding.adEmailLogin.error = "Username is empty"
             }
             else {
-                loginViewModel.postLoginCompany(username, password, socket!!, configUser!!)
+                loginViewModel.postLoginCompany(username, password)
                 loginViewModel.login.observe(this){
                     when(it){
                         is Resource.Success -> {
@@ -63,9 +69,12 @@ class LoginCompanyActivity : AppCompatActivity() {
                                     username
                                 )
                             )
-                            val intent = Intent(this, MainCompanyActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
+
+                            val jsonObject = JSONObject()
+                            jsonObject.put("user", username)
+                            jsonObject.put("token", it.data?.token)
+                            jsonObject.put("isOnline", true)
+                            socket!!.emit("SingIn", username, jsonObject)
 
                             finish()
                         }
@@ -89,5 +98,9 @@ class LoginCompanyActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+    }
+
+    companion object {
+        lateinit var users: User
     }
 }
