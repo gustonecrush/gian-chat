@@ -16,6 +16,7 @@ import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import umn.ac.id.myapplication.databinding.FragmentChatBinding
 import umn.ac.id.myapplication.databinding.FragmentChatCompanyBinding
 import umn.ac.id.myapplication.ui.api.ApiClient
 import umn.ac.id.myapplication.ui.api.SocketManager
@@ -32,7 +33,7 @@ import java.lang.reflect.Type
 class ChatFragment : Fragment() {
 
     private var mSocket: Socket? = null
-    private lateinit var binding: FragmentChatCompanyBinding
+    private lateinit var binding: FragmentChatBinding
     private val adapterUser = UserAdapter(arrayListOf(), object : UserAdapter.OnClickItem {
         override fun onClick(user: User) {
             val intent = Intent(requireContext(), MessageActivity::class.java)
@@ -47,7 +48,7 @@ class ChatFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentChatCompanyBinding.inflate(inflater, container, false)
+        binding = FragmentChatBinding.inflate(inflater, container, false)
         return binding.root
     }
 

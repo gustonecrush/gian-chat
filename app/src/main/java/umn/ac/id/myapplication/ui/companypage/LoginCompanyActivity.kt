@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -11,6 +12,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import io.socket.client.Socket
+import io.socket.emitter.Emitter
 import org.json.JSONObject
 import umn.ac.id.myapplication.databinding.ActivityLoginCompanyBinding
 import umn.ac.id.myapplication.ui.api.SocketManager
@@ -39,6 +41,23 @@ class LoginCompanyActivity : AppCompatActivity() {
         val loginViewModel = ViewModelProvider(this, LoginViewModelFactory(pref))[LoginViewModel::class.java]
 
         socket = SocketManager.getInstance(this)!!.getSocket()
+
+        socket!!.on(Socket.EVENT_CONNECT_ERROR) {
+            runOnUiThread {
+                Log.e("EVENT_CONNECT_ERROR", "EVENT_CONNECT_ERROR: ")
+            }
+        }
+        socket!!.on(
+            Socket.EVENT_CONNECT
+        ) { Log.e("onConnect", "Socket Connected!") };
+        socket!!.on(Socket.EVENT_DISCONNECT) {
+            runOnUiThread {
+                Log.e("onDisconnect", "Socket onDisconnect!")
+
+            }
+        }
+        socket!!.connect()
+
         socket!!.on("SingIn") { ars ->
             runOnUiThread {
                 users = Gson().fromJson(ars[1].toString(), User::class.java)
