@@ -44,7 +44,7 @@ class MessageActivity : AppCompatActivity() {
         }
 
         binding.btnSend.setOnClickListener {
-            sendMessage(intent.getStringExtra("token").toString(), LoginActivity.users.token)
+            sendMessage(intent.getStringExtra("token").toString(), LoginActivity.applicant.token)
         }
 
         mSocket!!.on("message") { arg ->
@@ -61,8 +61,8 @@ class MessageActivity : AppCompatActivity() {
 
     private fun sendMessage(tokenApplicant: String, tokenCompany: String) {
         val message = JSONObject()
-        message.put("user", LoginActivity.users.user)
-        message.put("token", LoginActivity.users.token)
+        message.put("user", LoginActivity.applicant.user)
+        message.put("token", LoginActivity.applicant.token)
         message.put("message", binding.inputMessage.text.toString())
 
         val messageData = MessageData(
@@ -71,7 +71,7 @@ class MessageActivity : AppCompatActivity() {
             Message = message
         )
 
-        val client = ApiClient.apiInstance.sendMessageFromApplicant(LoginActivity.users.token, messageData)
+        val client = ApiClient.apiInstance.sendMessageFromApplicant(LoginActivity.applicant.token, messageData)
         client.enqueue(object : Callback<GetChatResponse> {
             override fun onResponse(call: Call<GetChatResponse>, response: Response<GetChatResponse>) {
                 if (response.isSuccessful) {

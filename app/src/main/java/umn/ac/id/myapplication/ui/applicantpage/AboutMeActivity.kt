@@ -25,7 +25,6 @@ class AboutMeActivity : AppCompatActivity() {
 
     private var token = ""
     private lateinit var profileViewModel: ProfileViewModel
-    private lateinit var progressBar: ProgressBar
     private lateinit var binding: ActivityAboutMeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

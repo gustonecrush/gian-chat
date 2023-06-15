@@ -57,7 +57,7 @@ class MessageAdapter(val dataMessages: ArrayList<Message>) :
     override fun getItemViewType(position: Int): Int {
         val message = dataMessages[position]
         return when (message.token) {
-            LoginActivity.users.token -> 0
+            LoginActivity.applicant.token -> 0
             else -> 1
         }
     }

@@ -55,16 +55,6 @@ class LoginActivity : AppCompatActivity() {
         }
         socket!!.connect()
 
-        socket!!.on("SingIn") { ars ->
-            runOnUiThread {
-                users = Gson().fromJson(ars[1].toString(), User::class.java)
-                Intent(this@LoginActivity, MainActivity::class.java).also {
-                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(it)
-                }
-            }
-        }
-
         binding.buttonLogin.setOnClickListener {
             val username = binding.adUsernameLogin.text.toString().trim()
             val password = binding.adPasswordLogin.text.toString().trim()
@@ -85,6 +75,15 @@ class LoginActivity : AppCompatActivity() {
                                     username
                                 )
                             )
+
+                            socket!!.on("SingIn") { ars ->
+                                Log.e("ttttttttt", "${ars[0]}")
+                                Log.e("sssssssss", "${ars[1]}")
+                                runOnUiThread {
+                                    applicant = Gson().fromJson(ars[1].toString(), User::class.java)
+                                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                                }
+                            }
 
                             val jsonObject = JSONObject()
                             jsonObject.put("user", username)
@@ -116,6 +115,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        lateinit var users: User
+        lateinit var applicant: User
     }
 }

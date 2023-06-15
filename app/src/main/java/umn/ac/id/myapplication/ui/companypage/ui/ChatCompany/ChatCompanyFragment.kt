@@ -66,7 +66,7 @@ class ChatCompanyFragment : Fragment() {
                 val usersList: Type = object : TypeToken<List<User>>() {}.type
                 val userList = Gson().fromJson<List<User>>(ars[0].toString(), usersList)
                 val filteredUserList = userList.filter { user ->
-                    user.token != LoginCompanyActivity.users.token
+                    user.token != LoginCompanyActivity.company.token
                 }
 
                 adapterUser.apply {
@@ -84,7 +84,7 @@ class ChatCompanyFragment : Fragment() {
             tokenC = tokenCompany
         )
 
-        val client = ApiClient.apiInstance.createNewChat(LoginCompanyActivity.users.token, chatData)
+        val client = ApiClient.apiInstance.createNewChat(LoginCompanyActivity.company.token, chatData)
         client.enqueue(object : Callback<GetChatResponse> {
             override fun onResponse(call: Call<GetChatResponse>, response: Response<GetChatResponse>) {
                 if (response.isSuccessful) {

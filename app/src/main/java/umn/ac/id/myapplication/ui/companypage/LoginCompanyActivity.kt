@@ -58,16 +58,6 @@ class LoginCompanyActivity : AppCompatActivity() {
         }
         socket!!.connect()
 
-        socket!!.on("SingIn") { ars ->
-            runOnUiThread {
-                users = Gson().fromJson(ars[1].toString(), User::class.java)
-                Intent(this@LoginCompanyActivity, MainCompanyActivity::class.java).also {
-                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(it)
-                }
-            }
-        }
-
         binding.buttonLogin.setOnClickListener {
             val username = binding.adEmailLogin.text.toString().trim()
             val password = binding.adPasswordLogin.text.toString().trim()
@@ -89,11 +79,22 @@ class LoginCompanyActivity : AppCompatActivity() {
                                 )
                             )
 
+                            socket!!.on("SingIn") { ars ->
+                                runOnUiThread {
+                                    company = Gson().fromJson(ars[1].toString(), User::class.java)
+                                }
+                            }
+
                             val jsonObject = JSONObject()
                             jsonObject.put("user", username)
                             jsonObject.put("token", it.data?.token)
                             jsonObject.put("isOnline", true)
                             socket!!.emit("SingIn", username, jsonObject)
+
+                            Intent(this@LoginCompanyActivity, MainCompanyActivity::class.java).also { intent ->
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(intent)
+                            }
 
                             finish()
                         }
@@ -120,6 +121,6 @@ class LoginCompanyActivity : AppCompatActivity() {
     }
 
     companion object {
-        lateinit var users: User
+        lateinit var company: User
     }
 }

@@ -13,10 +13,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.databinding.FragmentProfileBinding
-import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
-import umn.ac.id.myapplication.ui.applicantpage.AboutMeChangeActivity
-import umn.ac.id.myapplication.ui.applicantpage.SettingsActivity
-import umn.ac.id.myapplication.ui.applicantpage.UploadCvActivity
+import umn.ac.id.myapplication.ui.applicantpage.*
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileViewModelFactory

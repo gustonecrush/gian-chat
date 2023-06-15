@@ -62,13 +62,15 @@ class ChatFragment : Fragment() {
             adapter = adapterUser
         }
 
+        Log.d("", "USER: ${LoginActivity.applicant.user} | ${LoginActivity.applicant.token}")
+
         mSocket!!.emit("allUser", true)
         mSocket!!.on("allUser") { ars ->
             activity?.runOnUiThread {
                 val usersList: Type = object : TypeToken<List<User>>() {}.type
                 val userList = Gson().fromJson<List<User>>(ars[0].toString(), usersList)
                 val filteredUserList = userList.filter { user ->
-                    user.token != LoginActivity.users.token
+                    user.token != LoginActivity.applicant.token
                 }
 
                 adapterUser.apply {

@@ -35,7 +35,6 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
         return userPreferences.getSession().asLiveData()
     }
 
-
     fun getCvData(token: String) {
 
         _isLoading.value = true

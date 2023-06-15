@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -16,9 +17,14 @@ import retrofit2.Response
 import umn.ac.id.myapplication.databinding.ActivityChatBinding
 import umn.ac.id.myapplication.ui.api.ApiClient
 import umn.ac.id.myapplication.ui.api.SocketManager
+import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileViewModel
+import umn.ac.id.myapplication.ui.viewmodel.MessageViewModel
 import umn.ac.id.myapplication.ui.data.GetChatResponse
+import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.model.Message
 import umn.ac.id.myapplication.ui.model.MessageData
+import umn.ac.id.myapplication.ui.viewmodelfactory.MessageViewModelFactory
+import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileViewModelFactory
 import java.lang.reflect.Type
 
 class MessageCompanyActivity : AppCompatActivity() {
@@ -44,7 +50,7 @@ class MessageCompanyActivity : AppCompatActivity() {
         }
 
         binding.btnSend.setOnClickListener {
-            sendMessage(intent.getStringExtra("token").toString(), LoginCompanyActivity.users.token)
+            sendMessage(intent.getStringExtra("token").toString(), LoginCompanyActivity.company.token)
         }
 
         mSocket!!.on("message") { arg ->
@@ -60,9 +66,10 @@ class MessageCompanyActivity : AppCompatActivity() {
     }
 
     private fun sendMessage(tokenApplicant: String, tokenCompany: String) {
+
         val message = JSONObject()
-        message.put("user", LoginCompanyActivity.users.user)
-        message.put("token", LoginCompanyActivity.users.token)
+        message.put("user", LoginCompanyActivity.company.user)
+        message.put("token", LoginCompanyActivity.company.token)
         message.put("message", binding.inputMessage.text.toString())
 
         val messageData = MessageData(
@@ -71,7 +78,7 @@ class MessageCompanyActivity : AppCompatActivity() {
             Message = message
         )
 
-        val client = ApiClient.apiInstance.sendMessageFromCompany(LoginCompanyActivity.users.token, messageData)
+        val client = ApiClient.apiInstance.sendMessageFromCompany(LoginCompanyActivity.company.token, messageData)
         client.enqueue(object : Callback<GetChatResponse> {
             override fun onResponse(call: Call<GetChatResponse>, response: Response<GetChatResponse>) {
                 if (response.isSuccessful) {
